@@ -1,0 +1,73 @@
+using System;
+
+namespace StudentApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Student student1 = new Student("Максим", 20, 8.5);
+            Console.WriteLine($"Студент: {student1.Name}, возраст: {student1.Age}, средний балл: {student1.AverageGrade}");
+
+            // Вывод информации о студенте
+            student1.PrintInfo();
+
+            // Оценка студента
+            Console.WriteLine($"{student1.GetGrade()}");
+
+            Student student2 = new Student("Петр", 19, 7.2);
+            student2.PrintInfo();
+            Console.WriteLine($"{student2.GetGrade()}");
+        }
+    }
+
+    public class Student
+    {
+        private string name;
+        private int age;
+        private double averageGrade;
+
+        public Student(string name, int age, double averageGrade)
+        {
+            this.name = name;
+            this.age = age;
+            this.averageGrade = averageGrade;
+        }
+
+        // Свойства для получения и установки значений
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public int Age
+        {
+            get { return age; }
+            set { age = value; }
+        }
+
+        public double AverageGrade
+        {
+            get { return averageGrade; }
+            set { averageGrade = value; }
+        }
+
+        // Метод для вывода информации о студенте
+        public void PrintInfo()
+        {
+            Console.WriteLine("Имя: " + name + ", возраст: " + age + ", средний балл: " + averageGrade);
+        }
+
+        // Метод для подсчета оценки студента на основе среднего балла
+        public string GetGrade()
+        {
+            if (averageGrade >= 8)
+                return "Отлично";
+            else if (averageGrade > 6 && averageGrade < 8)
+                return "Хорошо";
+            else
+                return "Удовлетворительно";
+        }
+    }
+}
